@@ -4,7 +4,7 @@ this leads to a slow transpilation time and therefore a bad developer experience
 
 ## Improvements
 - Custom Webpack configuration without a local server and without SSR
-- 
+- Additional plugins to make things even faster
 
 ## Installation
 - Copy this Webpack configuration to the root of your Vue Storefront 1 PWA
