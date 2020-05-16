@@ -21,7 +21,8 @@ fs.writeFileSync(
 const appRoot = __dirname;
 
 const themesRoot = path.resolve(appRoot, "src/themes");
-const themeRoot = require(path.resolve(appRoot, "core/build/theme-path"));
+const themeRoot = require(path.resolve(appRoot, "core/build/theme-path")); // @todo: Maybe replace this with your hard-coded theme path?
+//const themeRoot = path.resolve(themesRoot, "default"));
 const themeResources = themeRoot + "/resource";
 const themeCSS = themeRoot + "/css";
 const themeApp = themeRoot + "/App.vue";
