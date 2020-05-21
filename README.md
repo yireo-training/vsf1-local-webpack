@@ -2,7 +2,7 @@
 The default Webpack configuration of Vue Storefront 1 allows for fully testing all features. However, because of various reasons,
 this leads to a slow transpilation time and therefore a bad developer experience. This repository contains a separate Webpack 
 
-## Improvements
+## Features
 - Custom Webpack configuration without a local server and without SSR
 - Additional plugins to make things even faster
 
@@ -24,6 +24,10 @@ yarn add dayjs@1.8.15 -W
 ```
 
 - Run `yarn happydev`
+
+**WARNING**: You will need to run `yarn dev` at least once: This will generate a copy of your configuration
+that is picked up by the Vue environment.
+
 
 ## FAQ
 ### Will this break my PWA code?
