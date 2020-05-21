@@ -3,11 +3,13 @@
  */
 
 const path = require("path");
+const webpack = require("webpack");
+const autoprefixer = require("autoprefixer");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const autoprefixer = require("autoprefixer");
+const HardSourceWebpackPlugin = require("hard-source-webpack-plugin");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 
 /* 
 import config from 'config';
@@ -144,16 +146,23 @@ let webpackConfig = {
     }
   },
   devServer: {
-    historyApiFallback: true,
+    historyApiFallback: {
+      rewrites: [
+        { from: /./, to: '/index.html' }
+      ]
+    },
+    publicPath: "/",
     port: 3000,
-    contentBasePublicPath: '/assets',
-    contentBase: [
-      path.join(__dirname, 'src/themes/default/assets')
-    ]
+    open: false,
+    writeToDisk: true,
+    watchContentBase: true,
+    contentBasePublicPath: "/assets",
+    contentBase: [path.join(__dirname, "src/themes/default/assets")]
   },
   plugins: [
     new VueLoaderPlugin(),
     new HardSourceWebpackPlugin(),
+    new FriendlyErrorsWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "public/index.html"
     })
@@ -163,12 +172,12 @@ let webpackConfig = {
       new UglifyJsPlugin({
         parallel: true,
         sourceMap: false
-      }),
-    ],
+      })
+    ]
   }
 };
 
-const extendedConfig = require(path.join(themeRoot, '/webpack.config.js'))
+const extendedConfig = require(path.join(themeRoot, "/webpack.config.js"));
 webpackConfig = Object.assign(webpackConfig, extendedConfig);
 
 module.exports = webpackConfig;
