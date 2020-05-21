@@ -10,11 +10,19 @@ this leads to a slow transpilation time and therefore a bad developer experience
 - Copy this Webpack configuration to the root of your Vue Storefront 1 PWA
 - Copy this `public/` folder in the root of your Vue Storefront 1 PWA
 - Install some additional packages using `yarn`:
-    - `yarn add --dev hard-source-webpack-plugin -W`
-    - `yarn add --dev uglifyjs-webpack-plugin -W`
-    - `yarn add dayjs@1.8.15 -W`
+
+```bash
+yarn add --dev hard-source-webpack-plugin -W
+yarn add --dev uglifyjs-webpack-plugin -W
+yarn add dayjs@1.8.15 -W
+```
+
 - Add a new script to the `scripts` section of `package.json`
-    For example `"happydev": "cross-env NODE_ENV=development webpack-dev-server --open --inline --hot",`
+
+```
+"happydev": "cross-env NODE_ENV=development DEBUG='express:*' webpack-dev-server --open --inline --hot",
+```
+
 - Run `yarn happydev`
 
 ## FAQ
