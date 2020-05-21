@@ -3,7 +3,6 @@
  */
 
 const path = require("path");
-const webpack = require("webpack");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
@@ -44,6 +43,7 @@ let webpackConfig = {
   watch: true,
   entry: "./core/client-entry.ts",
   output: {
+    publicPath: "/",
     path: path.resolve(__dirname, "./dist")
   },
   module: {
@@ -118,17 +118,12 @@ let webpackConfig = {
     modules: ["node_modules", themesRoot],
     extensions: [".js", ".vue", ".gql", ".graphqls", ".ts", ".d.ts"],
     alias: {
-      // Main aliases
       config: path.resolve(appRoot, "core/build/config.json"),
       src: path.resolve(appRoot, "src"),
-
-      // Theme aliases
       theme: themeRoot,
       "theme/app": themeApp,
       "theme/css": themeCSS,
       "theme/resource": themeResources,
-
-      // Backward compatible
       "@vue-storefront/core/lib/store/multistore": path.resolve(
         appRoot,
         "core/lib/multistore.ts"
@@ -151,7 +146,10 @@ let webpackConfig = {
   devServer: {
     historyApiFallback: true,
     port: 3000,
-    contentBase: path.join(__dirname, 'public')
+    contentBasePublicPath: '/assets',
+    contentBase: [
+      path.join(__dirname, 'src/themes/default/assets')
+    ]
   },
   plugins: [
     new VueLoaderPlugin(),

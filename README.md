@@ -9,7 +9,6 @@ this leads to a slow transpilation time and therefore a bad developer experience
 ## Installation
 - Copy this Webpack configuration to the root of your Vue Storefront 1 PWA
 - Copy this `public/` folder in the root of your Vue Storefront 1 PWA
-- Copy your assets from your theme folder (fi `src/themes/default/assets`) to the `public/assets` folder, or possibly create a  symlink
 - Install some additional packages using `yarn`:
     - `yarn add --dev hard-source-webpack-plugin -W`
     - `yarn add --dev uglifyjs-webpack-plugin -W`
