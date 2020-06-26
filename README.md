@@ -13,6 +13,7 @@ this leads to a slow transpilation time and therefore a bad developer experience
 
 ```bash
 yarn add --dev hard-source-webpack-plugin -W
+yarn add --dev friendly-errors-webpack-plugin -W
 yarn add --dev uglifyjs-webpack-plugin -W
 yarn add dayjs@1.8.15 -W
 ```
