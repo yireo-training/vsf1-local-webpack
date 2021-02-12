@@ -19,6 +19,11 @@ this leads to a slow transpilation time and therefore a bad developer experience
 
 - Run `yarn happydev`
 
+### Multistore
+If you need multistore functioning correctly, follow these extra steps:
+- Merge this `core/` with `core/` in the root of your Vue Storefront 1 PWA, replacing `client-entry.ts`
+- In this `webpack.config.js`, under `devServer` add `allowedHosts` property with each storeView URL you have in your multistore config. Example: `allowedHosts: ['example.com', 'example.co.uk']`
+
 **WARNING**: You will need to run `yarn dev` at least once: This will generate a copy of your configuration
 that is picked up by the Vue environment.
 
